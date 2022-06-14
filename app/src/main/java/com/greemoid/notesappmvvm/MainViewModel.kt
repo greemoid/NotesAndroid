@@ -2,16 +2,16 @@ package com.greemoid.notesappmvvm
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.greemoid.notesappmvvm.database.room.AppRoomDatabase
 import com.greemoid.notesappmvvm.database.room.repository.RoomRepository
 import com.greemoid.notesappmvvm.model.Note
 import com.greemoid.notesappmvvm.utils.REPOSITORY
 import com.greemoid.notesappmvvm.utils.TYPE_FIREBASE
 import com.greemoid.notesappmvvm.utils.TYPE_ROOM
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainViewModel (application: Application) : AndroidViewModel(application) {
 
@@ -28,6 +28,18 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun addNote(note: Note, onSuccess: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            REPOSITORY.create(note = note) {
+                viewModelScope.launch(Dispatchers.Main) {
+                    onSuccess()
+                }
+            }
+        }
+    }
+
+    fun readAllNotes() = REPOSITORY.readAll
 }
 
 class MainViewModelFactory(private val application: Application) : ViewModelProvider.Factory {

@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import com.greemoid.notesappmvvm.database.room.dao.NoteRoomDao
 import com.greemoid.notesappmvvm.model.Note
 
 
-@Database(entities = [Note::class], version = 1)
+@Database(entities = [Note::class], version = 2)
 abstract class AppRoomDatabase: RoomDatabase() {
 
     abstract fun getRoomDao(): NoteRoomDao
@@ -24,7 +25,7 @@ abstract class AppRoomDatabase: RoomDatabase() {
                     context,
                     AppRoomDatabase::class.java,
                     "notes.db"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE as AppRoomDatabase
             } else INSTANCE as AppRoomDatabase
         }

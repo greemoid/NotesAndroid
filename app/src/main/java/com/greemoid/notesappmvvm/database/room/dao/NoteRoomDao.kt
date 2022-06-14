@@ -14,7 +14,7 @@ interface NoteRoomDao {
     @Delete
     suspend fun deleteNote(note: Note)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addNote(note: Note)
 
     @Update
