@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.greemoid.notesappmvvm.database.firebase.FirebaseRepository
 import com.greemoid.notesappmvvm.database.room.AppRoomDatabase
 import com.greemoid.notesappmvvm.database.room.repository.RoomRepository
 import com.greemoid.notesappmvvm.model.Note
@@ -18,13 +19,20 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
     val context = application
 
     fun initDatabase(type: String, onSuccess: () -> Unit) {
-        Log.d("checkData", "MainViewModel initDatabase with type: $type")
 
         when(type) {
             TYPE_ROOM -> {
                 val dao = AppRoomDatabase.getInstance(context).getRoomDao()
                 REPOSITORY = RoomRepository(dao)
                 onSuccess()
+            }
+            TYPE_FIREBASE -> {
+                REPOSITORY = FirebaseRepository()
+                REPOSITORY.connectToDatabase(
+                    { onSuccess()
+                    Log.d("checkData", "init database: $type")},
+                    { Log.d("checkData", "Error: $it")}
+                )
             }
         }
     }
