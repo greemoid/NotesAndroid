@@ -29,9 +29,8 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
             TYPE_FIREBASE -> {
                 REPOSITORY = FirebaseRepository()
                 REPOSITORY.connectToDatabase(
-                    { onSuccess()
-                    Log.d("checkData", "init database: $type")},
-                    { Log.d("checkData", "Error: $it")}
+                    { onSuccess() },
+                    { Log.d("checkData", "Error: ${it}")}
                 )
             }
         }

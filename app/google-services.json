@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "759668625893",
-    "project_id": "notes-app-e9910",
-    "storage_bucket": "notes-app-e9910.appspot.com"
+    "project_number": "294147014830",
+    "firebase_url": "https://note-c5669-default-rtdb.firebaseio.com",
+    "project_id": "note-c5669",
+    "storage_bucket": "note-c5669.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:759668625893:android:eb2dacd1e83ed004e15f0c",
+        "mobilesdk_app_id": "1:294147014830:android:86782b273696f14e20ad3f",
         "android_client_info": {
           "package_name": "com.greemoid.notesappmvvm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "759668625893-eo4c3fo1ebpp2e8uoie5kg5mq6p65bdu.apps.googleusercontent.com",
+          "client_id": "294147014830-aemb3lkhd62p2cc3uthfs09f4mrd8uut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greemoid.notesappmvvm",
+            "certificate_hash": "559bf37c129c298b018500878d11d78cc090c7aa"
+          }
+        },
+        {
+          "client_id": "294147014830-2urfksm8q7t2rg8k95un5j03qqtcoa6d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC5bgb0gadKpI-t2d1L6eJkl2TpnxLxs3U"
+          "current_key": "AIzaSyASvdT_-peqFe8mvtJjrh52VcXQi1bk8Og"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "759668625893-eo4c3fo1ebpp2e8uoie5kg5mq6p65bdu.apps.googleusercontent.com",
+              "client_id": "294147014830-2urfksm8q7t2rg8k95un5j03qqtcoa6d.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -5,6 +5,7 @@ import com.greemoid.notesappmvvm.database.DatabaseRepository
 const val TYPE_DATABASE = "type_database"
 const val TYPE_ROOM = "type_room"
 const val TYPE_FIREBASE = "type_firebase"
+const val FIREBASE_ID = "firebaseId"
 
 lateinit var REPOSITORY: DatabaseRepository
 lateinit var EMAIL: String
@@ -16,6 +17,8 @@ object Constants {
         const val NOTES_TABLE = "notes_table"
         const val ID = "Id"
         const val NONE = "none"
+        const val TITLE = "title"
+        const val SUBTITLE = "subtitle"
     }
 
     object SCREENS {

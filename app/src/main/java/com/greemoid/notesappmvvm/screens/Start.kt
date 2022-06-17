@@ -3,11 +3,14 @@ package com.greemoid.notesappmvvm.screens
 import android.app.Application
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -62,7 +65,9 @@ fun StartScreen(navController: NavHostController, viewModel: MainViewModel) {
                             isButtonEnabled = email.isNotEmpty() && password.isNotEmpty()
                         },
                         label = { Text(text = "Password") },
-                        isError = password.isEmpty()
+                        isError = password.isEmpty(),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        visualTransformation = PasswordVisualTransformation()
                     )
                     Button(
                         modifier = Modifier.padding(top = 16.dp),
@@ -71,7 +76,7 @@ fun StartScreen(navController: NavHostController, viewModel: MainViewModel) {
                             EMAIL = email
                             PASSWORD = password
                             viewModel.initDatabase(TYPE_FIREBASE) {
-
+                                navController.navigate(NavRoute.Main.route)
                             }
                             }
                     ) {
